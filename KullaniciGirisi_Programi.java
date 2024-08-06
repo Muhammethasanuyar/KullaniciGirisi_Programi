@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import javax.swing.plaf.TreeUI;
-
 public class KullaniciGirisi_Programi {
 
     public static void main(String[] args) {
@@ -18,31 +16,34 @@ public class KullaniciGirisi_Programi {
         String yeni_kullanici_ismi = "";
         String yeni_sifre = "";
         String evet = "";
+
         int a = 0;
         while (true) {
             if (deneme_hakki != 0) {
+
                 System.out.print("lütfen kullanici isminizi giriniz : ");
                 girilen_kullanici_ismi = scanner.nextLine();
                 System.out.print("lütfen şifreinizi giriniz : ");
                 girilen_kullanici_sifresi = scanner.nextLine();
             }
 
-            if (kullanici_ismi.equals(girilen_kullanici_ismi) && sifre.equals(girilen_kullanici_sifresi)) {
+            if (kullanici_ismi.equals(girilen_kullanici_ismi) && sifre.equals(girilen_kullanici_sifresi)&&a==0) {
                 System.out.println("giris basarili");
                 System.out.println("hosgeldiniz");
                 break;
             }
 
             if ((!kullanici_ismi.equals(girilen_kullanici_ismi) || !sifre.equals(girilen_kullanici_sifresi))
-                    && deneme_hakki != 0) {
+                    && deneme_hakki >0) {
                 System.out.println("kullanici adi veya sifre yanliş tekrar deneyiniz");
                 deneme_hakki--;
-             
 
             }
-            if(!girilen_kullanici_ismi.equals(yeni_kullanici_ismi)&&!girilen_kullanici_sifresi.equals(yeni_sifre)){
+            if (!girilen_kullanici_ismi.equals(yeni_kullanici_ismi) && !girilen_kullanici_sifresi.equals(yeni_sifre)) {
+               if(deneme_hakki!=0){
                 System.out.println("kalan deneme hakki : " + deneme_hakki);
             }
+        }
             if (deneme_hakki == 0) {
                 System.out.println("giris hakkiniz bitmistir. Sifreyi yenilemek ister misiniz? (evet/hayir) ");
                 evet = scanner.nextLine();
@@ -64,7 +65,7 @@ public class KullaniciGirisi_Programi {
                     yeni_sifre = scanner.nextLine();
                     System.out.println("kullanici ismi ve şifre güncellendi");
                     deneme_hakki = 5;
-
+                    a++;
                     if (!evet.equals("evet")) {
                         System.out.println("giriş yapilmasdi...");
 
@@ -76,5 +77,6 @@ public class KullaniciGirisi_Programi {
 
             }
         }
+        scanner.close();
     }
 }
